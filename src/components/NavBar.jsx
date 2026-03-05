@@ -8,27 +8,21 @@ import { useGSAP } from "@gsap/react";
 const navItems = ['Nexus', 'Vault', 'Prologue', 'About', 'Contact'];
 
 const NavBar = () => {
-
-    // Referencias 
     const navContainerRef = useRef(null);
     const audioElementRef = useRef(null);
 
-    // Variaveis
     const [isIndicatorActive, setIsIndicatorActive] = useState(false);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [isNavVisible, setIsNavVisible] = useState(true);
 
-    // Detecta o scroll
     const { y:currentScrollY } = useWindowScroll();
 
-    // Muda o estado do audio
     const toggleAudioIndicator = () => {
         setIsAudioPlaying((prev) => !prev);
         setIsIndicatorActive((prev) => !prev);
     }
 
-    // Controla o audio
     useEffect(() => {
         if(isAudioPlaying) {
             audioElementRef.current.play();
@@ -37,7 +31,6 @@ const NavBar = () => {
         }
     });
 
-    // Controla a visibilidade da nav
     useEffect(() => {
         if(currentScrollY == 0){
             setIsNavVisible(true);

@@ -8,13 +8,11 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 const Hero = () => {
 
-    // Declarando as Variaveis
     const [currentIndex, setCurrentIndex] = useState(1);
     const [hasClicked, setHasClicked] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [loadedVideos, setLoadedVideos] = useState(0);
 
-    // Variaveis para controle dos videos
     const totalVideos = 4;
     const nextVideoRef = useRef(null);
     const upComingVideoIndex = (currentIndex % totalVideos) + 1;
@@ -24,21 +22,18 @@ const Hero = () => {
         setCurrentIndex(upComingVideoIndex);
     }
 
-    // Carregamento dos videos
     const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
     const handleVideoLoad = () => {
         setLoadedVideos((prev) => prev + 1);
     }
 
 
-    // Loading dos videos
     useEffect(() => {
         if (loadedVideos === totalVideos - 1) {
             setIsLoading(false);
         }
     }, [loadedVideos]);
 
-    // Iniciando o GSAP para animar os videos
     useGSAP(() => {
         if (hasClicked) {
             gsap.set('#next-video', { visibility: 'visible' });
@@ -62,7 +57,6 @@ const Hero = () => {
         }
     }, { dependencies: [currentIndex], revertOnUpdate: true })
 
-    // GSAP para efeito de scroll entre as seções 
     useGSAP(() => {
         gsap.set('#video-frame', {
             clipPath: 'polygon(14% 0%, 72% 0%, 90% 90%, 0% 100%)',

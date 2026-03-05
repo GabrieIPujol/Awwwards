@@ -6,7 +6,6 @@ import AnimatedTitle from "./AnimatedTitle";
 gsap.registerPlugin(ScrollTrigger);
 const About = () => {
 
-    // Iniciando o gsap
     useGSAP(() => {
         const clipAnimation = gsap.timeline({
             scrollTrigger: {
@@ -19,7 +18,6 @@ const About = () => {
             }
         })
 
-        // Animação para aumentar a img
         clipAnimation.to('.mask-clip-path', {
             width: '100vw',
             height: '100vh',

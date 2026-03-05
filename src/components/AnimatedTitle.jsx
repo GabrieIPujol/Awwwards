@@ -7,10 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const AnimatedTitle = ({ title, containerClass }) => {
 
-    // Declarando a referencia do container para o ScrollTrigger
     const containerRef = useRef(null);
 
-    // Inicializando o gsap/scrolltrigger
     useEffect(() => {
         const ctx = gsap.context(() => {
             const titleAnimation = gsap.timeline({
